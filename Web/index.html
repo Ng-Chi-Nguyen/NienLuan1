@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="./Style/style.css">
+   <title>Bài toán cái balo</title>
+</head>
+
+<body>
+   <h2>Bài toán cái balo</h2>
+   <h3> - Nhập số món đồ</h3>
+   <form id="baloForm" action="./index.html" method="get">
+      <input type="number" placeholder="Nhập số món đồ" name="SoMonDo" id="soMonDo" min="1" required> <br>
+      <input type="number" placeholder="Nhập trọng lượng tối đa của túi" id="trongLuongBalo" name="TrongLuongToiDa"
+         min="1" required>
+      <button type="button" onclick="nhapMonDo()">Tiếp tục</button>
+   </form>
+
+   <div id="nhapGT_TL">
+      <h2>Nhập trọng lượng và giá trị của các món đồ</h2>
+      <form id="GT_SL_Form" action="./index.html" method="get" onsubmit="tinhToan(event)">
+         <div id="itemInputs"></div>
+         <button type="submit">Gửi</button>
+      </form>
+   </div>
+   <div id="table_sort">
+      <h3>Bảng thông tin các món đồ đã sắp xếp theo đơn giá</h3>
+      <table>
+         <thead>
+            <tr>
+               <th>Món đồ</th>
+               <th>Trọng lượng</th>
+               <th>Giá trị</th>
+               <th>Đơn giá</th>
+            </tr>
+         </thead>
+         <tbody id="tableBody"></tbody>
+      </table>
+   </div>
+   <div id="result"></div>
+
+   <!-- <script src="./Js/jscript.js"></script> -->
+   <script src="./Js/jsBaiToan.js"></script>
+</body>
+
+</html>

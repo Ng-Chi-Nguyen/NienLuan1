@@ -1,0 +1,59 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram name="Page-1" id="ZFs8-4-jBYJnGN-R3rwn">
+    <mxGraphModel dx="1036" dy="654" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="gxaI5k8sVBO4LivFNvQa-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gxaI5k8sVBO4LivFNvQa-1" target="gxaI5k8sVBO4LivFNvQa-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gxaI5k8sVBO4LivFNvQa-1" value="Truy vét món đồ" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gxaI5k8sVBO4LivFNvQa-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gxaI5k8sVBO4LivFNvQa-2" target="gxaI5k8sVBO4LivFNvQa-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gxaI5k8sVBO4LivFNvQa-2" value="Cho trọng lượng còn lại bằng trọng lượng balo" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="180" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gxaI5k8sVBO4LivFNvQa-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gxaI5k8sVBO4LivFNvQa-3" target="gxaI5k8sVBO4LivFNvQa-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gxaI5k8sVBO4LivFNvQa-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gxaI5k8sVBO4LivFNvQa-3" target="gxaI5k8sVBO4LivFNvQa-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gxaI5k8sVBO4LivFNvQa-3" value="Trọng lương còn lại &amp;gt; 0 &amp;amp;&amp;amp; lần chọn != -1" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="265" y="320" width="290" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="gxaI5k8sVBO4LivFNvQa-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="gxaI5k8sVBO4LivFNvQa-4" target="gxaI5k8sVBO4LivFNvQa-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="gxaI5k8sVBO4LivFNvQa-4" value="Khởi tạo i = lần chọn của trọng lượng hiện tại" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="317.5" y="490" width="185" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="gxaI5k8sVBO4LivFNvQa-5" value="Kết thúc" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gxaI5k8sVBO4LivFNvQa-6" value="Số lần chọn tại i tăng lên 1&lt;div&gt;Trọng lượng còn lại -= Trọng lượng vật thứ i&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="285" y="630" width="250" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="gxaI5k8sVBO4LivFNvQa-7" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="gxaI5k8sVBO4LivFNvQa-6" target="gxaI5k8sVBO4LivFNvQa-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="380" as="sourcePoint" />
+            <mxPoint x="450" y="330" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="200" y="660" />
+              <mxPoint x="200" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gxaI5k8sVBO4LivFNvQa-13" value="Đúng" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="415" y="440" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gxaI5k8sVBO4LivFNvQa-14" value="Sai" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="570" y="338" width="40" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

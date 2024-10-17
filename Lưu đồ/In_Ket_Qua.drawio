@@ -1,0 +1,43 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram name="Page-1" id="GLd_3bn2cWi7MOiYZhYd">
+    <mxGraphModel dx="1036" dy="654" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p2s1nFZY8zyxUA8gGLjv-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p2s1nFZY8zyxUA8gGLjv-1" target="p2s1nFZY8zyxUA8gGLjv-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2s1nFZY8zyxUA8gGLjv-1" value="In kết quả" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p2s1nFZY8zyxUA8gGLjv-9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p2s1nFZY8zyxUA8gGLjv-2" target="p2s1nFZY8zyxUA8gGLjv-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2s1nFZY8zyxUA8gGLjv-2" value="Xuất ra giá trị lớn nhất của balo" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="310" y="170" width="220" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p2s1nFZY8zyxUA8gGLjv-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p2s1nFZY8zyxUA8gGLjv-3" target="p2s1nFZY8zyxUA8gGLjv-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2s1nFZY8zyxUA8gGLjv-3" value="Khởi tạo Tộng trọng lượng = 0 và Tổng đơn giá = 0" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="310" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p2s1nFZY8zyxUA8gGLjv-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p2s1nFZY8zyxUA8gGLjv-4" target="p2s1nFZY8zyxUA8gGLjv-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2s1nFZY8zyxUA8gGLjv-4" value="In các món đồ đã chọn" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" vertex="1" parent="1">
+          <mxGeometry x="335" y="440" width="170" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p2s1nFZY8zyxUA8gGLjv-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="p2s1nFZY8zyxUA8gGLjv-5" target="p2s1nFZY8zyxUA8gGLjv-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p2s1nFZY8zyxUA8gGLjv-5" value="Xuất ra trọng lượng còn lại của balo và&lt;div&gt;&amp;nbsp;tổng đơn giá của các món đồ đã chọn&lt;/div&gt;" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="285" y="570" width="270" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p2s1nFZY8zyxUA8gGLjv-6" value="Kết thúc in kết quả" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="360" y="700" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

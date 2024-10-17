@@ -1,0 +1,56 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram name="Page-1" id="u5Cy5Z3deVTKN5Q23Wih">
+    <mxGraphModel dx="1036" dy="654" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="roSSIclZ34Tv-HlK5Aqq-1" value="Tính giá trị lớn nhất" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="40" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="roSSIclZ34Tv-HlK5Aqq-2" value="Max j &amp;lt; Max[j - TL i] + GT i" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="325" y="180" width="170" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="roSSIclZ34Tv-HlK5Aqq-3" value="Cập nhật giá trị lớn nhất tại j = giá trị lớn nhất [ cột j - trọng lượng vật i] + Giá trị vật i" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="290" y="360" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="roSSIclZ34Tv-HlK5Aqq-4" value="Trả về giá trị lớn nhất" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="520" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="roSSIclZ34Tv-HlK5Aqq-5" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="roSSIclZ34Tv-HlK5Aqq-1" target="roSSIclZ34Tv-HlK5Aqq-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="360" as="sourcePoint" />
+            <mxPoint x="450" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="roSSIclZ34Tv-HlK5Aqq-6" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="roSSIclZ34Tv-HlK5Aqq-2" target="roSSIclZ34Tv-HlK5Aqq-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="420" y="110" as="sourcePoint" />
+            <mxPoint x="420" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="roSSIclZ34Tv-HlK5Aqq-7" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="roSSIclZ34Tv-HlK5Aqq-3" target="roSSIclZ34Tv-HlK5Aqq-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="420" y="290" as="sourcePoint" />
+            <mxPoint x="420" y="370" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="roSSIclZ34Tv-HlK5Aqq-8" value="Đúng" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="417" y="298" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="roSSIclZ34Tv-HlK5Aqq-9" value="" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="roSSIclZ34Tv-HlK5Aqq-2" target="roSSIclZ34Tv-HlK5Aqq-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="360" as="sourcePoint" />
+            <mxPoint x="450" y="310" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="600" y="230" />
+              <mxPoint x="600" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="roSSIclZ34Tv-HlK5Aqq-10" value="Sai" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="540" y="198" width="40" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
