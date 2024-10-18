@@ -1,4 +1,4 @@
-// Cấu trúc DoVat tương đương với struct trong C++
+
 class DoVat {
    constructor(giaTri, trongLuong, chiSo) {
       this.GiaTri = giaTri;
@@ -7,12 +7,11 @@ class DoVat {
    }
 }
 
-// Mảng lưu trữ các đối tượng DoVat
-let Arr = []; // Tương tự mảng DoVat[] trong C++
-let soMonDo = 0; // Số món đồ (giống int SoMonDo)
-let trongLuongBalo = 0; // Trọng lượng balo tối đa (giống int TrongLuongBalo)
-let giaTriLonNhat = []; // Mảng giá trị lớn nhất có thể đạt được (giống int GiaTriLonNhat[])
-let lanChon = []; // Mảng lưu chỉ số món đồ được chọn (giống int LanChon[])
+let Arr = [];
+let soMonDo = 0;
+let trongLuongBalo = 0;
+let giaTriLonNhat = [];
+let lanChon = [];
 
 function nhapMonDo() {
    const soMonDo = document.getElementById('soMonDo').value;
@@ -31,7 +30,7 @@ function nhapMonDo() {
    }
 }
 
-function tinhToan(event) {
+function TimGiariLonNhat(event) {
    event.preventDefault(); // Ngăn form gửi dữ liệu
    const trongLuongBalo = parseInt(document.getElementById('trongLuongBalo').value); // Lấy giá trị balo từ form
    if (isNaN(trongLuongBalo)) {
@@ -42,7 +41,6 @@ function tinhToan(event) {
    const trongLuongs = Array.from(document.getElementsByClassName('trongLuong')).map(input => parseInt(input.value));
    const giaTris = Array.from(document.getElementsByClassName('giaTri')).map(input => parseInt(input.value));
 
-   // Kiểm tra nếu bất kỳ input nào không phải số
    if (trongLuongs.includes(NaN) || giaTris.includes(NaN)) {
       alert("Vui lòng nhập đầy đủ và hợp lệ các trọng lượng và giá trị của món đồ.");
       return;
@@ -57,18 +55,15 @@ function tinhToan(event) {
    const Arr = [];
    for (let i = 0; i < soMonDo; i++) {
       const donGia = giaTris[i] / trongLuongs[i];
-      Arr.push(new DoVat(giaTris[i], trongLuongs[i], i)); // Tạo đối tượng DoVat
+      Arr.push(new DoVat(giaTris[i], trongLuongs[i], i));
    }
-
-   // Kiểm tra mảng Arr
    if (Arr.length === 0) {
       alert("Không có món đồ nào được nhập.");
       return;
    }
 
-   // Hiển thị thông tin vào bảng
    const tableBody = document.getElementById('tableBody');
-   tableBody.innerHTML = ''; // Xóa nội dung cũ
+   tableBody.innerHTML = '';
    Arr.forEach(item => {
       const row = document.createElement('tr');
       row.innerHTML = `
@@ -80,20 +75,23 @@ function tinhToan(event) {
       tableBody.appendChild(row);
    });
 
-   // Hiển thị bảng
    document.getElementById('table_sort').style.display = 'block';
 
    // Tính giá trị lớn nhất
+   function TinhGiaTriLonNhat(giaTriLonNhat, lanChon, Arr, i, j) {
+      if (giaTriLonNhat[j] < giaTriLonNhat[j - Arr[i].TrongLuong] + Arr[i].GiaTri) {
+         giaTriLonNhat[j] = giaTriLonNhat[j - Arr[i].TrongLuong] + Arr[i].GiaTri;
+         lanChon[j] = i;
+      }
+   }
    for (let j = 0; j <= trongLuongBalo; j++) {
-      for (let i = 0; i < Arr.length; i++) { // Sửa chỉ số vòng lặp
+      for (let i = 0; i < Arr.length; i++) {
          if (Arr[i].TrongLuong <= j) {
-            if (giaTriLonNhat[j] < giaTriLonNhat[j - Arr[i].TrongLuong] + Arr[i].GiaTri) {
-               giaTriLonNhat[j] = giaTriLonNhat[j - Arr[i].TrongLuong] + Arr[i].GiaTri;
-               lanChon[j] = i;
-            }
+            TinhGiaTriLonNhat(giaTriLonNhat, lanChon, Arr, i, j);
          }
       }
    }
+
 
    // Truy vết món đồ đã chọn
    let trongLuongConLai = trongLuongBalo;

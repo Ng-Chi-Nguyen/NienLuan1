@@ -10,7 +10,7 @@
 
 <body>
    <h2>Bài toán cái balo</h2>
-   <h3> - Nhập số món đồ</h3>
+   <h3 class="title_add"> - Nhập số món đồ</h3>
    <form id="baloForm" action="./index.html" method="get">
       <input type="number" placeholder="Nhập số món đồ" name="SoMonDo" id="soMonDo" min="1" required> <br>
       <input type="number" placeholder="Nhập trọng lượng tối đa của túi" id="trongLuongBalo" name="TrongLuongToiDa"
@@ -20,7 +20,7 @@
 
    <div id="nhapGT_TL">
       <h2>Nhập trọng lượng và giá trị của các món đồ</h2>
-      <form id="GT_SL_Form" action="./index.html" method="get" onsubmit="tinhToan(event)">
+      <form id="GT_SL_Form" action="./index.html" method="get" onsubmit="TimGiariLonNhat(event)">
          <div id="itemInputs"></div>
          <button type="submit">Gửi</button>
       </form>
