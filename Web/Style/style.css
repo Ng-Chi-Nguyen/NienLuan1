@@ -9,9 +9,9 @@
     -moz-appearance: textfield; /* Loại bỏ mũi tên trên Firefox */
     appearance: textfield;      /* Ẩn mũi tên trên các trình duyệt khác */
 }
-/* #nhapGT_TL, #result, #table_sort{
+#nhapGT_TL, #result{
    display: none;
-} */
+}
 * {
    font-family: "Roboto", sans-serif;
 }
@@ -26,7 +26,7 @@
 }
 #baloForm .Box{
    display: flex;
-   margin-left: 500px;
+   justify-content: center;
    align-items: center;
    height: 30px;
 }
@@ -64,11 +64,12 @@
    color: #1E90FF;
 }
 #nhapGT_TL{
-   margin-left: 500px;
+   text-align: center;
 }
 #nhapGT_TL .Box{
    display: flex;
    align-items: center;
+   justify-content: center;
 }
 #nhapGT_TL .Box p{
    margin-right: 15px;
@@ -76,14 +77,59 @@
 #nhapGT_TL .Box input{
    margin-right: 15px;
 }
-#nhapGT_TL button{
-   margin-left: 100px;
-}
 #table_PA {
    border-collapse: collapse;
 }
 #table_PA td{
    border: 1px solid #000;
    padding: 5px;
+   text-align: center;
+   width: 20px;
+   height: 20px;
+}
+#result{
+   text-align: center;
+   margin-top: 15px;
+}
+.Bg_Nau{
+   background: #e0e5e2;
+}
+/* Thêm lớp cho ô i\j */
+.ij-cell {
+   position: relative;
+   background: linear-gradient(45deg, transparent 49%, #000 50%, transparent 51%);
+   width: 15px; /* Giảm kích thước */
+   height: 15px;
+   text-align: center;
+   vertical-align: middle;
+}
+
+.ij-cell::before,
+.ij-cell::after {
+   content: '';
+   position: absolute;
+   color: black;
+}
+
+.ij-cell::before {
+   content: 'i';
+   bottom: 2px;
+   left: 5px;
+}
+
+.ij-cell::after {
+   content: 'j';
+   top: -1px;
+   right: 3px;
+}
+.BPA{
+   text-align: center;
+}
+.BPA .row{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.BPA #table_PA{
    text-align: center;
 }
