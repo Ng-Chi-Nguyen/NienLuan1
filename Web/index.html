@@ -9,35 +9,35 @@
 </head>
 
 <body>
-   <h2>Bài toán cái balo</h2>
-   <h3 class="title_add"> - Nhập số món đồ</h3>
+   <h2 class="title">Bài toán cái balo</h2>
    <form id="baloForm" action="./index.html" method="get">
-      <input type="number" placeholder="Nhập số món đồ" name="SoMonDo" id="soMonDo" min="1" required> <br>
-      <input type="number" placeholder="Nhập trọng lượng tối đa của túi" id="trongLuongBalo" name="TrongLuongToiDa"
-         min="1" required>
-      <button type="button" onclick="nhapMonDo()">Tiếp tục</button>
+      <div class="Box">
+         <p class="title_add">Số món đồ:</p>
+         <input type="number" name="SoMonDo" id="soMonDo" min="1" required class="no-arrow">
+      </div>
+      <br>
+      <div class="Box">
+         <p class="title_add">Trọng lượng Balo:</p>
+         <input type="number" id="trongLuongBalo" name="TrongLuongToiDa" min="1" required class="no-arrow">
+      </div>
+      <button type="button" onclick="nhapMonDo()">Hoàn thành</button>
    </form>
-
+   <p id="NoiDung_baloForm"></p>
    <div id="nhapGT_TL">
-      <h2>Nhập trọng lượng và giá trị của các món đồ</h2>
+      <p class="title_GTTL">Nhập trọng lượng và giá trị của các món đồ</p>
       <form id="GT_SL_Form" action="./index.html" method="get" onsubmit="TimGiariLonNhat(event)">
          <div id="itemInputs"></div>
-         <button type="submit">Gửi</button>
+         <button type="submit">Hoàn thành</button>
       </form>
    </div>
-   <div id="table_sort">
-      <h3>Bảng thông tin các món đồ đã sắp xếp theo đơn giá</h3>
-      <table>
-         <thead>
-            <tr>
-               <th>Món đồ</th>
-               <th>Trọng lượng</th>
-               <th>Giá trị</th>
-               <th>Đơn giá</th>
-            </tr>
-         </thead>
-         <tbody id="tableBody"></tbody>
-      </table>
+   <div>
+      <p>Bảng phương án</p>
+      <div class="row">
+         <table id="table_PA">
+            <thead id="tableHead"></thead>
+            <tbody id="tableBody"></tbody>
+         </table>
+      </div>
    </div>
    <div id="result"></div>
 

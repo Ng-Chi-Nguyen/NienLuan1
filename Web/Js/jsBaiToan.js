@@ -1,4 +1,3 @@
-
 class DoVat {
    constructor(giaTri, trongLuong, chiSo) {
       this.GiaTri = giaTri;
@@ -13,8 +12,27 @@ let trongLuongBalo = 0;
 let giaTriLonNhat = [];
 let lanChon = [];
 
+const baloFormInputs = document.querySelectorAll('#baloForm input');
+baloFormInputs.forEach(input => {
+   input.addEventListener('input', function () {
+      if (this.value) {
+         this.style.borderColor = 'blue'; // Đổi viền thành màu xanh nếu có dữ liệu
+      } else {
+         this.style.borderColor = ''; // Reset viền nếu không có dữ liệu
+      }
+   });
+});
+
 function nhapMonDo() {
    const soMonDo = document.getElementById('soMonDo').value;
+   const trongLuongBalo = document.getElementById('trongLuongBalo').value;
+   // Tạo nội dung để hiển thị
+   const ketQua = `
+      <p class="content_SS1">Balo có ${soMonDo} món đồ và trọng lượng tối đa là ${trongLuongBalo} kg</p>
+   `;
+   document.getElementById('NoiDung_baloForm').innerHTML = ketQua;
+   document.getElementById('baloForm').style.display = 'none';
+
    // Hiện phần nhập trọng lượng và giá trị
    document.getElementById('nhapGT_TL').style.display = 'block';
    const itemInputs = document.getElementById('itemInputs');
@@ -22,87 +40,145 @@ function nhapMonDo() {
 
    for (let i = 0; i < soMonDo; i++) {
       itemInputs.innerHTML += `
-           <div>
-               <input type="number" placeholder="Trọng lượng món đồ ${i + 1}" class="trongLuong" required>
-               <input type="number" placeholder="Giá trị món đồ ${i + 1}" class="giaTri" required>
+           <div class="Box">
+               <p>Nhập GT - TL đồ vật ${i + 1}: </p>
+               <input type="number" placeholder="TL" class="trongLuong no-arrow" required>
+               <input type="number" placeholder="GT" class="giaTri no-arrow" required>
            </div>
        `;
    }
+
+   const allInputs = itemInputs.querySelectorAll('#nhapGT_TL .Box input');
+   allInputs.forEach(input => {
+      input.addEventListener('input', function () {
+         if (this.value) {
+            this.style.borderColor = 'blue'; // Đổi viền thành màu xanh nếu có dữ liệu
+         } else {
+            this.style.borderColor = ''; // Reset viền nếu không có dữ liệu
+         }
+      });
+   });
 }
 
 function TimGiariLonNhat(event) {
    event.preventDefault(); // Ngăn form gửi dữ liệu
    const trongLuongBalo = parseInt(document.getElementById('trongLuongBalo').value); // Lấy giá trị balo từ form
-   if (isNaN(trongLuongBalo)) {
-      alert("Vui lòng nhập trọng lượng balo hợp lệ.");
-      return;
-   }
 
    const trongLuongs = Array.from(document.getElementsByClassName('trongLuong')).map(input => parseInt(input.value));
    const giaTris = Array.from(document.getElementsByClassName('giaTri')).map(input => parseInt(input.value));
 
-   if (trongLuongs.includes(NaN) || giaTris.includes(NaN)) {
-      alert("Vui lòng nhập đầy đủ và hợp lệ các trọng lượng và giá trị của món đồ.");
-      return;
-   }
-
    const soMonDo = giaTris.length;
    const giaTriLonNhat = Array(trongLuongBalo + 1).fill(0);
-   const lanChon = Array(trongLuongBalo + 1).fill(-1); // Lưu chỉ số món đồ đã chọn
-   const soLanChon = Array(soMonDo).fill(0);
-
-   // Tính toán đơn giá và lưu vào mảng Arr
    const Arr = [];
+
    for (let i = 0; i < soMonDo; i++) {
-      const donGia = giaTris[i] / trongLuongs[i];
       Arr.push(new DoVat(giaTris[i], trongLuongs[i], i));
    }
+
    if (Arr.length === 0) {
       alert("Không có món đồ nào được nhập.");
       return;
    }
 
+   hienThiBangPhuongAn(giaTriLonNhat, trongLuongBalo, soMonDo, Arr);
+   hienThiKetQua(giaTriLonNhat, lanChon, trongLuongBalo, Arr); // Hiện kết quả
+}
+
+function hienThiBangPhuongAn(giaTriLonNhat, trongLuongBalo, soMonDo, Arr) {
+   const tableHeader = document.getElementById('tableHead');
    const tableBody = document.getElementById('tableBody');
+
+   // Xóa tiêu đề và các hàng dữ liệu cũ
+   tableHeader.innerHTML = '';
    tableBody.innerHTML = '';
-   Arr.forEach(item => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-           <td>Món đồ ${item.ChiSo + 1}</td>
-           <td>${item.TrongLuong}</td>
-           <td>${item.GiaTri}</td>
-           <td>${(item.GiaTri / item.TrongLuong).toFixed(2)}</td>
-       `;
-      tableBody.appendChild(row);
-   });
 
-   document.getElementById('table_sort').style.display = 'block';
+   // Tạo hàng tiêu đề
+   const headerRow = document.createElement('tr');
+   headerRow.innerHTML = '<td>W</td><td>V</td><td>i\\j</td>'; // Các tiêu đề cột đầu tiên
 
-   // Tính giá trị lớn nhất
-   function TinhGiaTriLonNhat(giaTriLonNhat, lanChon, Arr, i, j) {
-      if (giaTriLonNhat[j] < giaTriLonNhat[j - Arr[i].TrongLuong] + Arr[i].GiaTri) {
-         giaTriLonNhat[j] = giaTriLonNhat[j - Arr[i].TrongLuong] + Arr[i].GiaTri;
-         lanChon[j] = i;
-      }
-   }
+   // Thêm các tiêu đề cột từ 0 đến trongLuongBalo
    for (let j = 0; j <= trongLuongBalo; j++) {
-      for (let i = 0; i < Arr.length; i++) {
-         if (Arr[i].TrongLuong <= j) {
-            TinhGiaTriLonNhat(giaTriLonNhat, lanChon, Arr, i, j);
+      const headerCell = document.createElement('td');
+      headerCell.textContent = j;
+      headerRow.appendChild(headerCell);
+   }
+   tableHeader.appendChild(headerRow); // Đặt hàng tiêu đề vào phần <thead>
+
+   // Mảng lưu giá trị lớn nhất cho từng cột
+   const maxValues = Array(trongLuongBalo + 1).fill(0);
+
+   // Hàm phụ trợ để hiển thị bảng tại mỗi bước
+   function hienThiHang(taiTrongLuongBalo, monDo) {
+      const row = document.createElement('tr');
+
+      // Kiểm tra trước khi hiển thị giá trị của món đồ
+      if (monDo === 0) {
+         row.innerHTML = `<td></td><td></td><td>0</td>`;
+      } else if (monDo - 1 < Arr.length && monDo - 1 >= 0) { // Kiểm tra chỉ số hợp lệ
+         row.innerHTML = `
+              <td>${Arr[monDo - 1].TrongLuong}</td>
+              <td>${Arr[monDo - 1].GiaTri}</td>
+              <td>${monDo}</td>
+          `;
+      } else {
+         console.error("Món đồ không tồn tại tại chỉ số: " + (monDo - 1));
+         row.innerHTML = `<td></td><td></td><td>${monDo}</td>`; // Hiển thị chỉ số mà không có giá trị
+      }
+
+      // Tạo một mảng lưu các ô cho từng giá trị
+      const cells = [];
+
+      for (let j = 0; j < taiTrongLuongBalo.length; j++) { // Cập nhật số ô cần hiển thị
+         const cell = document.createElement('td');
+         cell.textContent = taiTrongLuongBalo[j];
+         row.appendChild(cell);
+         cells.push(cell); // Lưu các ô vào mảng
+      }
+
+      // Tô màu cho ô có giá trị lớn nhất trong mỗi cột
+      for (let j = 0; j < cells.length; j++) {
+         const currentValue = taiTrongLuongBalo[j];
+
+         // Lấy tất cả các giá trị trong cột hiện tại để tìm giá trị lớn nhất
+         const columnValues = Array.from(tableBody.querySelectorAll(`tr td:nth-child(${j + 4})`)).map(cell => parseInt(cell.textContent || 0));
+
+         // Lấy giá trị lớn nhất trong cột
+         const maxInColumn = Math.max(...columnValues);
+
+         // Kiểm tra nếu giá trị hiện tại lớn hơn giá trị lớn nhất trong cột
+         if (currentValue > maxInColumn) {
+            // Reset màu cho tất cả các ô trong cột
+            const columnCells = Array.from(tableBody.querySelectorAll(`tr td:nth-child(${j + 4})`)); // Cột tương ứng
+            columnCells.forEach(cell => {
+               cell.style.color = ''; // Đặt lại màu mặc định
+               cell.style.fontWeight = 'normal'; // Đặt lại chữ bình thường
+            });
+
+            // Tô màu ô hiện tại
+            cells[j].style.color = 'red'; // Đổi màu ô có giá trị lớn nhất thành đỏ
+            cells[j].style.fontWeight = 'bold'; // Đậm chữ
          }
       }
+
+      tableBody.appendChild(row);
    }
 
+   // Hàng đầu tiên cho trạng thái khi chưa có đồ vật nào
+   hienThiHang(giaTriLonNhat.slice(), 0); // Sử dụng slice để không thay đổi mảng gốc
 
-   // Truy vết món đồ đã chọn
-   let trongLuongConLai = trongLuongBalo;
-   while (trongLuongConLai > 0 && lanChon[trongLuongConLai] !== -1) {
-      const i = lanChon[trongLuongConLai];
-      soLanChon[i]++;
-      trongLuongConLai -= Arr[i].TrongLuong;
+   // Tính giá trị lớn nhất
+   for (let i = 0; i < Arr.length; i++) { // Lặp qua từng đồ vật
+      for (let j = 0; j <= trongLuongBalo; j++) {
+         if (Arr[i].TrongLuong <= j) {
+            if (giaTriLonNhat[j] < giaTriLonNhat[j - Arr[i].TrongLuong] + Arr[i].GiaTri) {
+               giaTriLonNhat[j] = giaTriLonNhat[j - Arr[i].TrongLuong] + Arr[i].GiaTri;
+            }
+         }
+      }
+      hienThiHang(giaTriLonNhat.slice(), i + 1); // Hiển thị giá trị sau khi xử lý từng đồ vật
    }
 
-   // Truyền Arr vào hàm hienThiKetQua
-   hienThiKetQua(giaTriLonNhat, soLanChon, trongLuongBalo, Arr);
+   document.getElementById('table_PA').style.display = 'block'; // Hiển thị bảng
 }
 
 function hienThiKetQua(giaTriLonNhat, soLanChon, trongLuongBalo, Arr) {

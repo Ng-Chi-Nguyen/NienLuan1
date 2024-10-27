@@ -1,4 +1,89 @@
+/* Ẩn mũi tên trên tất cả trình duyệt */
+.no-arrow::-webkit-outer-spin-button,
+.no-arrow::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Loại bỏ mũi tên trên Chrome, Safari, Edge và Opera */
+    margin: 0;
+}
 
-#nhapGT_TL, #result, #table_sort{
+.no-arrow {
+    -moz-appearance: textfield; /* Loại bỏ mũi tên trên Firefox */
+    appearance: textfield;      /* Ẩn mũi tên trên các trình duyệt khác */
+}
+/* #nhapGT_TL, #result, #table_sort{
    display: none;
+} */
+* {
+   font-family: "Roboto", sans-serif;
+}
+ 
+.title{
+   font-size: 25px;
+   text-transform: uppercase;
+   text-align: center;
+}
+#baloForm{
+   text-align: center;
+}
+#baloForm .Box{
+   display: flex;
+   margin-left: 500px;
+   align-items: center;
+   height: 30px;
+}
+#baloForm .Box .title_add{
+   font-size: 16px;
+   margin-right: 10px;
+}
+#baloForm .Box input, #nhapGT_TL .Box input{
+   width: 50px;
+   height: 30px;
+   outline: none;
+   border-radius: 7px;
+   border: 1px solid #FF2000;
+   text-align: center;
+   cursor: pointer;
+}
+#baloForm button, #nhapGT_TL button{
+   padding: 10px 20px;
+   background: #FFF;
+   border: 1px solid #1E90FF;
+   color: #1E90FF;
+   cursor: pointer;
+   border-radius: 6px;
+   margin-top: 15px;
+}
+#baloForm button:hover, #nhapGT_TL button:hover{
+   background: #1E90FF;
+   color: #FFF;
+   transition: 0.2s;
+}
+
+.content_SS1{
+   text-align: center;
+   font-size: 19px;
+   color: #1E90FF;
+}
+#nhapGT_TL{
+   margin-left: 500px;
+}
+#nhapGT_TL .Box{
+   display: flex;
+   align-items: center;
+}
+#nhapGT_TL .Box p{
+   margin-right: 15px;
+}
+#nhapGT_TL .Box input{
+   margin-right: 15px;
+}
+#nhapGT_TL button{
+   margin-left: 100px;
+}
+#table_PA {
+   border-collapse: collapse;
+}
+#table_PA td{
+   border: 1px solid #000;
+   padding: 5px;
+   text-align: center;
 }
