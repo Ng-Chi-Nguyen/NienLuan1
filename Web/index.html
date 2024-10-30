@@ -13,14 +13,14 @@
    <form id="baloForm" action="./index.html" method="get">
       <div class="Box">
          <p class="title_add">Số món đồ:</p>
-         <input type="number" name="SoMonDo" id="soMonDo" min="1" required class="no-arrow">
+         <input type="number" name="SoMonDo" id="soMonDo" min="1" required class="no-arrow" tabindex="1">
       </div>
       <br>
       <div class="Box">
          <p class="title_add">Trọng lượng Balo:</p>
-         <input type="number" id="trongLuongBalo" name="TrongLuongToiDa" min="1" required class="no-arrow">
+         <input type="number" id="trongLuongBalo" name="TrongLuongToiDa" min="1" required class="no-arrow" tabindex="2">
       </div>
-      <button type="button" onclick="nhapMonDo()">Hoàn thành</button>
+      <button type="button" tabindex="3" onclick="nhapMonDo()">Hoàn thành</button>
       <p id="error" class="co-red"></p>
    </form>
    <p id="NoiDung_baloForm"></p>
@@ -28,7 +28,7 @@
       <p class="title_GTTL">Nhập trọng lượng và giá trị của các món đồ</p>
       <form id="GT_SL_Form" action="./index.html" method="get" onsubmit="TimGiariLonNhat(event)">
          <div id="itemInputs"></div>
-         <button type="submit">Hoàn thành</button>
+         <button type="submit" tabindex="6">Hoàn thành</button>
       </form>
    </div>
    <div class="BPA">

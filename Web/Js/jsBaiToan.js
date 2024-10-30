@@ -78,8 +78,8 @@ function nhapMonDo() {
       itemInputs.innerHTML += `
            <div class="Box">
                <p>Đồ vật ${i + 1}: </p>
-               <input type="number" placeholder="TL" class="trongLuong no-arrow" required>
-               <input type="number" placeholder="GT" class="giaTri no-arrow" required>
+               <input type="number" placeholder="TL" class="trongLuong no-arrow" required  tabindex="4">
+               <input type="number" placeholder="GT" class="giaTri no-arrow" required  tabindex="4">
            </div>
        `;
    }
