@@ -34,7 +34,7 @@ function resetGame(e) {
 }
 function kiemTraRong(value, errorMessage) {
    const error = document.getElementById('error');
-   if (value === "") {
+   if (value === "" || value === 0) {
       error.innerHTML = errorMessage;
       error.style.display = 'block';
 
