@@ -149,22 +149,6 @@ function TimGiaTriLonNhat_ThamAn(event) {
    TaoBang_ThamAn(Arr, lanChon);
    HienThiKetQua_ThamAn(tongGiaTri, Arr, lanChon);
 }
-function GiaiThuatThamAn(Arr, trongLuongBalo, soMonDo) {
-   let tongGiaTri = 0;
-   let tongTrongLuong = 0;
-   let lanChon = new Array(soMonDo).fill(0); // Khởi tạo mảng lanChon với 0 cho từng đồ vật
-
-   for (let i = 0; i < Arr.length; i++) {
-      while (tongTrongLuong + Arr[i].TrongLuong <= trongLuongBalo) {
-         tongGiaTri += Arr[i].GiaTri;
-         tongTrongLuong += Arr[i].TrongLuong;
-         Arr[i].SoLuong++; // Tăng số lượng cho món đồ đang được chọn
-         lanChon[Arr[i].ChiSo]++; // Tăng số lần chọn cho đồ vật tương ứng
-      }
-   }
-
-   return { tongGiaTri, tongTrongLuong, lanChon };
-}
 function TaoBang_ThamAn(Arr, lanChon) {
    // Đặt giá trị mặc định cho trongLuongBalo nếu chưa truyền vào (ở đây là 100)
    const trongLuongBalo = document.getElementById('trongLuongBalo').value;
