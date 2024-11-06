@@ -105,6 +105,8 @@ function nhapMonDo() {
 
 function TimGiaTriLonNhat_QuyHoachDong(event) {
    event.preventDefault();
+   const BPA = document.getElementById('dis_none');
+   BPA.style.display = "block";
    const trongLuongBalo = parseInt(document.getElementById('trongLuongBalo').value); // Lấy giá trị balo từ form
 
    const trongLuongs = Array.from(document.getElementsByClassName('trongLuong')).map(input => parseInt(input.value));
@@ -119,7 +121,6 @@ function TimGiaTriLonNhat_QuyHoachDong(event) {
    hienThiBangPhuongAn(giaTriLonNhat, trongLuongBalo, soMonDo, Arr);
    hienThiKetQua(giaTriLonNhat, lanChon, trongLuongBalo, Arr); // Hiện kết quả
 }
-
 function TimGiaTriLonNhat_ThamAn(event) {
    event.preventDefault();
    const trongLuongBalo = parseInt(document.getElementById('trongLuongBalo').value); // Lấy giá trị balo từ form
@@ -175,7 +176,8 @@ function TaoBang_ThamAn(Arr, lanChon) {
    Arr.forEach(doVat => {
       const donGia = (doVat.GiaTri / doVat.TrongLuong).toFixed(2); // Tính đơn giá trực tiếp
       const hangDuLieu = document.createElement('tr');
-      hangDuLieu.innerHTML = `<td>${doVat.ChiSo + 1}</td><td>${doVat.GiaTri}</td><td>${doVat.TrongLuong}</td><td>${donGia}</td><td>${lanChon[doVat.ChiSo]}</td>`;
+      const rowClass = lanChon[doVat.ChiSo] > 0 ? 'co-red' : '';
+      hangDuLieu.innerHTML = `<td>${doVat.ChiSo + 1}</td><td>${doVat.GiaTri}</td><td>${doVat.TrongLuong}</td><td>${donGia}</td><td class="${rowClass}">${lanChon[doVat.ChiSo]}</td>`;
       noiDungBang.appendChild(hangDuLieu);
    });
 }
@@ -347,7 +349,7 @@ function timMonDoDuocChon(trongLuongBalo, giaTriLonNhat, lanChon, Arr) {
 
    // Tìm ngược từ trọng lượng tối đa đến khi không thể chọn thêm món nào
    let GioiHan = 0;
-   while (trongLuongConLai > 0 && lanChon[trongLuongConLai] !== -1 && GioiHan < 2) {
+   while (trongLuongConLai > 0 && lanChon[trongLuongConLai] !== -1 && GioiHan < 1000) {
       console.log(trongLuongConLai)
       const i = lanChon[trongLuongConLai];
       if (i >= 0 && i < Arr.length) {

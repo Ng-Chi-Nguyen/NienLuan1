@@ -4,18 +4,34 @@
     -webkit-appearance: none; /* Loại bỏ mũi tên trên Chrome, Safari, Edge và Opera */
     margin: 0;
 }
-
+.co-red{
+   color: #FF2000;
+   font-weight: bold;
+}
 .no-arrow {
     -moz-appearance: textfield; /* Loại bỏ mũi tên trên Firefox */
     appearance: textfield;      /* Ẩn mũi tên trên các trình duyệt khác */
 }
-#nhapGT_TL, #result{
+#nhapGT_TL, #result, #dis_none{
    display: none;
 }
 * {
    font-family: "Roboto", sans-serif;
+   position: relative;
+}
+.iconBalo{
+   z-index: -10;
+   width: 300px;
+   height: auto;
+   object-fit: cover;
+   transform: scaleX(-1);
+   mix-blend-mode: color-burn;
+   position: absolute;
+   top: 52px;
+   left: 59%;
 }
 .title{
+   padding-top: 100px;
    font-size: 25px;
    text-transform: uppercase;
    text-align: center;
@@ -156,13 +172,20 @@
    display: flex;
    justify-content: end;
 }
+.conatiner{
+   overflow-x: auto; /* Cho phép cuộn ngang khi nội dung quá rộng */
+   -webkit-overflow-scrolling: touch; /* Thêm cho các thiết bị di động */
+}
 .left_QHD{
    width: calc(50% - 10px);
    text-align: right;
    padding-right: 30px;
    border-right: 1px solid #000;
+   overflow-x: auto; /* Thêm thanh cuộn ngang */
+   max-width: 50%; /* Giới hạn chiều rộng tối đa của bảng */
 }
 .right_ThamAn{
+   z-index: 10;
    width: calc(50% - 10px);
    padding-left: 30px;
    text-align: left;
