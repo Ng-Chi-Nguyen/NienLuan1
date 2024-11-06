@@ -92,10 +92,10 @@
 #nhapGT_TL .Box input{
    margin-right: 15px;
 }
-#table_PA {
+#table_PA, #table_PA_ThamAn {
    border-collapse: collapse;
 }
-#table_PA td{
+#table_PA td, #table_PA_ThamAn td{
    border: 1px solid #000;
    padding: 5px;
    text-align: center;
@@ -137,17 +137,7 @@
    top: -1px;
    right: 3px;
 }
-.BPA{
-   text-align: center;
-}
-.BPA .row{
-   display: flex;
-   align-items: center;
-   justify-content: center;
-}
-.BPA #table_PA{
-   text-align: center;
-}
+
 .punk-bg {
    background-color: #ea6fea; /* Màu hồng neon */
    color: white; /* Chữ màu trắng */
@@ -158,4 +148,38 @@
 .loadGame{
    width: 65px;
    height: auto;
+}
+.row_BPA{
+   display: flex;
+}
+.BPA_QHD{
+   display: flex;
+   justify-content: end;
+}
+.left_QHD{
+   width: calc(50% - 10px);
+   text-align: right;
+   padding-right: 30px;
+   border-right: 1px solid #000;
+}
+.right_ThamAn{
+   width: calc(50% - 10px);
+   padding-left: 30px;
+   text-align: left;
+}
+#result_QuyHoachDong{
+   margin-top: 15px;
+   text-align: left;
+    margin-left: 77%;
+}
+#result_ThamAn{
+   margin-top: 15px;
+   max-width: 22%;
+}
+.mg0{
+   margin-top: 0;
+   margin-bottom: 0;
+}
+.title_PA{
+   text-align: center;
 }

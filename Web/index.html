@@ -26,21 +26,37 @@
    <p id="NoiDung_baloForm"></p>
    <div id="nhapGT_TL">
       <p class="title_GTTL">Nhập trọng lượng và giá trị của các món đồ</p>
-      <form id="GT_SL_Form" action="./index.html" method="get" onsubmit="TimGiariLonNhat(event)">
+      <form id="GT_SL_Form" action="./index.html" method="get" onsubmit="TimGiaTriLonNhat(event)">
          <div id="itemInputs"></div>
          <button type="submit" tabindex="6">Hoàn thành</button>
       </form>
    </div>
-   <div class="BPA">
-      <p class="title_PA"></p>
-      <div class="row">
-         <table id="table_PA">
-            <thead id="tableHead"></thead>
-            <tbody id="tableBody"></tbody>
-         </table>
+   <p class="title_PA"></p>
+   <div class="row_BPA">
+      <div class="left_QHD">
+         <p>QUY HOẠCH ĐỘNG</p>
+         <div class="BPA_QHD">
+            <div class="row">
+               <table id="table_PA">
+                  <thead id="tableHead"></thead>
+                  <tbody id="tableBody"></tbody>
+               </table>
+            </div>
+         </div>
+         <div id="result_QuyHoachDong"></div>
       </div>
-   </div>
-   <div id="result">
+      <div class="right_ThamAn">
+         <div class="BPA_ThamAn">
+            <p>THAM AN</p>
+            <div class="row">
+               <table id="table_PA_ThamAn">
+                  <thead id="tableHead_ThamAn"></thead>
+                  <tbody id="tableBody_ThamAn"></tbody>
+               </table>
+            </div>
+         </div>
+         <div id="result_ThamAn"></div>
+      </div>
    </div>
    <!-- <script src="./Js/jscript.js"></script> -->
    <script src="./Js/jsBaiToan.js"></script>
