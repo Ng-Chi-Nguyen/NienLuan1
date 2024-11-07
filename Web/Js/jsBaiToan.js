@@ -169,7 +169,7 @@ function TaoBang_ThamAn(Arr, lanChon) {
 
    // Tạo hàng tiêu đề
    const hangTieuDe = document.createElement('tr');
-   hangTieuDe.innerHTML = '<td class="Bg_Nau">Món đồ</td><td>V</td><td>W</td><td>$</td><td class="Bg_Nau">Chọn</td>';
+   hangTieuDe.innerHTML = '<td class="Bg_Nau">Đồ vật</td><td>V</td><td>W</td><td><img class="Dola" src="./Img/Dola.png"></td><td class="Bg_Nau">Chọn</td>';
    tieuDeBang.appendChild(hangTieuDe);
 
    // Tạo nội dung bảng dựa trên mảng Arr
@@ -226,7 +226,7 @@ function hienThiBangPhuongAn(giaTriLonNhat, trongLuongBalo, soMonDo, Arr) {
 
    // Tạo hàng tiêu đề
    const hangTieuDe = document.createElement('tr');
-   hangTieuDe.innerHTML = '<td>$</td><td>W</td><td>V</td><td class="ij-cell"></td>';
+   hangTieuDe.innerHTML = '<td><img class="Dola" src="./Img/Dola.png"></td><td>W</td><td>V</td><td class="ij-cell"></td>';
 
    // Thêm các tiêu đề cột từ 0 đến trongLuongBalo
    for (let j = 0; j <= trongLuongBalo; j++) {
