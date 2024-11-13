@@ -11,31 +11,44 @@
 <body>
    <h2 class="title">Bài toán cái balo</h2>
    <form id="baloForm" action="./index.html" method="get">
-      <div class="Box">
-         <p class="title_add">Số món đồ:</p>
-         <input type="number" name="SoMonDo" id="soMonDo" min="1" required class="no-arrow" tabindex="1">
-      </div>
+      <table>
+         <tr class="Box">
+            <td>
+               <p class="title_add">Số món đồ:</p>
+            </td>
+            <td><input type="number" name="SoMonDo" id="soMonDo" min="1" required class="no-arrow" tabindex="1"></td>
+         </tr>
+         <tr class="Box">
+            <td>
+               <p class="title_add">Trọng lượng Balo:</p>
+            </td>
+            <td class="pos">
+               <input type="number" id="trongLuongBalo" name="TrongLuongToiDa" min="1" required class="no-arrow"
+                  tabindex="2">
+            </td>
+         </tr>
+      </table>
       <br>
-      <div class="Box">
-         <p class="title_add">Trọng lượng Balo:</p>
-         <input type="number" id="trongLuongBalo" name="TrongLuongToiDa" min="1" required class="no-arrow" tabindex="2">
-      </div>
-      <button type="button" tabindex="3" onclick="nhapMonDo()">Hoàn thành</button>
+      <button class="btnSubmit" type="button" tabindex="3" onclick="nhapMonDo()">Hoàn thành</button>
+      <!-- <div class="Box">
+         <p class="title_add">Tải lên file .txt:</p>
+         <input type="file" id="fileInput" accept=".txt" />
+         <button id="loadDataButton">Tải dữ liệu</button>
+      </div> -->
       <p id="error" class="co-red"></p>
    </form>
    <p id="NoiDung_baloForm"></p>
    <div id="nhapGT_TL">
-      <p class="title_GTTL">Nhập trọng lượng và giá trị của các món đồ</p>
       <form id="GT_SL_Form" action="./index.html" method="get" onsubmit="TimGiaTriLonNhat(event)">
          <div id="itemInputs"></div>
-         <button type="submit" tabindex="6">Hoàn thành</button>
+         <button class="btnSubmit" type="submit" tabindex="6">Hoàn thành</button>
       </form>
    </div>
-   <p class="title_PA"></p>
    <div id="dis_none">
+      <p class="title_PA bold pos"></p>
       <div class="row_BPA">
          <div class="left_QHD">
-            <p>QUY HOẠCH ĐỘNG</p>
+            <p class="co-nau bold">QUY HOẠCH ĐỘNG</p>
             <div class="BPA_QHD">
                <div class="row conatiner">
                   <table id="table_PA">
@@ -44,11 +57,11 @@
                   </table>
                </div>
             </div>
-            <div id="result_QuyHoachDong"></div>
+            <!-- <div id="result_QuyHoachDong"></div> -->
          </div>
          <div class="right_ThamAn">
             <div class="BPA_ThamAn">
-               <p>THAM AN</p>
+               <p class="co-nau bold">THAM AN</p>
                <div class="row">
                   <table id="table_PA_ThamAn">
                      <thead id="tableHead_ThamAn"></thead>
@@ -56,11 +69,18 @@
                   </table>
                </div>
             </div>
-            <div id="result_ThamAn"></div>
+            <!-- <div id="result_ThamAn"></div> -->
          </div>
       </div>
    </div>
-   <img src="./Img/Balo (2).png" alt="" class="iconBalo">
+   <div id="AnKQ">
+      <p class="title_KetQua bold pos">KẾT QUẢ</p>
+      <div class="rowKetQua">
+         <div id="result_QuyHoachDong"></div>
+         <div id="result_ThamAn"></div>
+         <img src="./Img/DapAn.png" alt="" class="dapan">
+      </div>
+   </div>
    <!-- <script src="./Js/jscript.js"></script> -->
    <script src="./Js/jsBaiToan.js"></script>
 </body>

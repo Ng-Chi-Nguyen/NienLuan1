@@ -65,10 +65,11 @@ function nhapMonDo() {
 
    // Tạo nội dung để hiển thị
    const ketQua_SS1 = `
-         <p class="content_SS1">
-            Balo có ${soMonDo} món đồ và trọng lượng tối đa là ${trongLuongBalo} kg
+         <div class="content_SS1">
+            <p class="pos"><img src="./Img/MonDo.jpeg"> <span class="Nd1">${soMonDo}</span></p>
+            <p class="pos"><img src="./Img/W_Max.webp"> <span class="Nd2">${trongLuongBalo}</span></p>
             <img class="loadGame" id="loadGame" src="./Img/iconChoiLaiGame.png">
-         </p>
+         </div>
    `;
 
    document.getElementById('NoiDung_baloForm').innerHTML = ketQua_SS1;
@@ -85,7 +86,7 @@ function nhapMonDo() {
    for (let i = 0; i < soMonDo; i++) {
       oNhapGT_TL.innerHTML += `
            <div class="Box">
-               <p>Đồ vật ${i + 1}: </p>
+               <p class="title_add">Đồ vật ${i + 1}: </p>
                <input type="number" placeholder="TL" class="trongLuong no-arrow" required  tabindex="4">
                <input type="number" placeholder="GT" class="giaTri no-arrow" required  tabindex="4">
            </div>
@@ -101,6 +102,7 @@ function nhapMonDo() {
          }
       });
    });
+
 }
 
 function TimGiaTriLonNhat_QuyHoachDong(event) {
@@ -139,6 +141,7 @@ function TimGiaTriLonNhat_ThamAn(event) {
    let tongTrongLuong = 0;
    let lanChon = new Array(soMonDo).fill(0); // Khởi tạo mảng lanChon với 0 cho từng đồ vật
    for (let i = 0; i < Arr.length; i++) {
+      // console.log(i)
       while (tongTrongLuong + Arr[i].TrongLuong <= trongLuongBalo) {
          tongGiaTri += Arr[i].GiaTri;
          tongTrongLuong += Arr[i].TrongLuong;
@@ -158,6 +161,7 @@ function TaoBang_ThamAn(Arr, lanChon) {
    const tieuDeTA = document.querySelectorAll(".title_TA_ThamAn");
    tieuDeTA.forEach(element => {
       element.innerHTML = "<p>BẢNG THAM AN</p>";
+      element.classList.add("bold")
    });
 
    const tieuDeBang = document.getElementById('tableHead_ThamAn');
@@ -182,6 +186,8 @@ function TaoBang_ThamAn(Arr, lanChon) {
    });
 }
 function HienThiKetQua_ThamAn(tongGiaTri, Arr, lanChon) {
+   const boxKetQua = document.getElementById('AnKQ');
+   boxKetQua.style.display = "block";
    const trongLuongBalo = document.getElementById('trongLuongBalo').value;
 
    // Tính tổng đơn giá và lọc ra các đồ vật được chọn
@@ -202,11 +208,10 @@ function HienThiKetQua_ThamAn(tongGiaTri, Arr, lanChon) {
 
    KetQua.style.display = 'block';
    KetQua.innerHTML = `
-      <strong>Tổng giá trị</strong>: ${tongGiaTri} <br>
-      <strong>Đồ vật được chọn:</strong><br>
-         ${doVatDuocChon.map(doVat => `Đồ vật ${doVat.ChiSo + 1} chọn ${lanChon[doVat.ChiSo]} lần`).join('<br> ')}<br>
-      <strong>Trọng lượng còn lại</strong>: ${trongLuongConLai} <br>
-      <strong>Tổng đơn giá</strong>: ${tongDonGia.toFixed(2)}$
+      <p class="kq_GTLN_kq_ThamAn">${tongGiaTri}</p>
+      <p class="kq_GTLN_kq_ThamAn">${trongLuongConLai}kg</p>
+      <p class="kq_GTLN_kq_ThamAn mg_bottom">${tongDonGia.toFixed(2)}$</p>
+      ${doVatDuocChon.map(doVat => `<p class="CacDoVatDcChon mg_top kq_GTLN_kq_ThamAn">Đồ vật ${doVat.ChiSo + 1} chọn ${lanChon[doVat.ChiSo]} lần</p>`).join('')}
    `;
 }
 
@@ -367,6 +372,8 @@ function timMonDoDuocChon(trongLuongBalo, giaTriLonNhat, lanChon, Arr) {
 
 
 function hienThiKetQua(giaTriLonNhat, lanChon, trongLuongBalo, Arr) {
+   const boxKetQua = document.getElementById('AnKQ');
+   boxKetQua.style.display = "block";
    const KetQua = document.getElementById('result_QuyHoachDong');
    const tongGiaTri = giaTriLonNhat[trongLuongBalo];
    let tongTrongLuong = 0;
@@ -376,24 +383,100 @@ function hienThiKetQua(giaTriLonNhat, lanChon, trongLuongBalo, Arr) {
    // console.log(soLanChon)
    if (soLanChon.every(count => count === 0)) {
       // console.log("Không có đồ vật nào được chọn");
-      KetQua.innerHTML += `<p class="co-red">Không có đồ vật nào được chọn, tất cả đều vượt quá trọng lượng tối đa của balo</p>`;
+      KetQua.innerHTML += `<p class="co-red">Không có đồ vật nào được chọn, tất cả đều <br> vượt quá trọng lượng tối đa của balo</p>`;
+      const QHD = document.getElementById("result_QuyHoachDong");
+      QHD.style.marginLeft = "35px";
       return; // Kết thúc hàm
    }
-   KetQua.innerHTML = `<strong>Giá trị lớn nhất:</strong> ${tongGiaTri !== undefined ? tongGiaTri : 0}<br>`;
-
-   KetQua.innerHTML += `<strong>Đồ vật đã chọn:</strong><br>`;
+   KetQua.innerHTML = `
+      <div class="row_KqGTLN noWrap">
+         <div class="kq_GTLN">Giá trị lớn nhất:</div><p class="kq_GTLN_kq"> ${tongGiaTri !== undefined ? tongGiaTri : 0}</p>
+      </div>
+   `;
+   const trongLuongConLai = trongLuongBalo - tongTrongLuong;
+   KetQua.innerHTML += `
+      <div class="row_KqGTLN">
+         <div class="kq_GTLN noWrap">Trọng lượng còn lại:</div> <p class="kq_GTLN_kq">${trongLuongConLai} kg</p>
+      </div>
+   `;
+   KetQua.innerHTML += `
+   
+   <div class="row_KqGTLN">
+      <div class="kq_GTLN noWrap">Tổng đơn giá:</div> <p class="kq_GTLN_kq">${tongDonGia.toFixed(2)}$</p>
+   </div>
+   
+   `;
+   KetQua.innerHTML += `<div class="kq_GTLN">Đồ vật đã chọn:</div>`;
 
    // Tính toán số lần chọn cho từng món đồ
    for (let i = 0; i < soLanChon.length; i++) {
       if (soLanChon[i] > 0) {
          const doVat = Arr[i];
-         KetQua.innerHTML += `Đồ vật ${doVat.ChiSo + 1} chọn ${soLanChon[i]} lần<br>`;
+         KetQua.innerHTML += `<p class="CacDoVatDcChon kq_GTLN_kq">Đồ vật ${doVat.ChiSo + 1} chọn ${soLanChon[i]} lần <br></p>`;
          tongTrongLuong += soLanChon[i] * doVat.TrongLuong;
          tongDonGia += (doVat.GiaTri / doVat.TrongLuong) * soLanChon[i];
       }
    }
-
-   const trongLuongConLai = trongLuongBalo - tongTrongLuong;
-   KetQua.innerHTML += `<strong>Trọng lượng còn lại:</strong> ${trongLuongConLai}<br>`;
-   KetQua.innerHTML += `<strong>Tổng đơn giá:</strong> ${tongDonGia.toFixed(2)}$<br>`;
 }
+// document.getElementById('fileInput').addEventListener('change', handleFileInput);
+
+// function handleFileInput(event) {
+//    const file = event.target.files[0];
+//    if (!file) {
+//       return;
+//    }
+
+//    const reader = new FileReader();
+
+//    reader.onload = function (e) {
+//       const content = e.target.result;
+//       console.log(content)
+//       // Chuyển chuỗi thành mảng các dòng
+//       const dongs = content.split("\n");
+//       const soMonDo = dongs[0];
+//       const trongLuongBalo = dongs[1];
+
+//       let items = [];
+
+//       // Duyệt qua từng dòng, bỏ qua 2 dòng đầu và lấy giá trị/trọng lượng
+//       for (let i = 2; i < dongs.length; i++) {
+//          const line = dongs[i].trim();
+//          if (line) {
+//             const values = line.split(" ");  // Tách các giá trị theo dấu cách
+//             if (values.length >= 2) {
+//                const giaTri = parseInt(values[0], 10);  // Giá trị
+//                const trongLuong = parseInt(values[1], 10);  // Trọng lượng
+//                items.push({ giaTri, trongLuong });  // Lưu cặp giá trị và trọng lượng vào mảng
+//             }
+//          }
+//       }
+
+//       console.log(items);  // In ra mảng các đối tượng {giaTri, trongLuong}
+//    };
+
+//    reader.readAsText(file);
+// }
+
+// // Hàm xử lý tệp TXT
+// function parseTXT(txt) {
+//    const lines = txt.split('\n');
+//    const n = parseInt(lines[0].trim()); // Số lượng đồ vật
+//    const maxWeight = parseInt(lines[1].trim()); // Trọng lượng tối đa của balo
+//    const items = [];
+
+//    for (let i = 2; i < 2 + n; i++) {
+//       const values = lines[i].split(' ').map(val => parseInt(val.trim()));
+//       if (values.length === 2) {
+//          items.push({
+//             id: i - 1,
+//             weight: values[0],
+//             value: values[1]
+//          });
+//       }
+//    }
+
+//    return {
+//       items: items,
+//       maxWeight: maxWeight
+//    };
+// }
