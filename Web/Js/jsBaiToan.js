@@ -209,7 +209,7 @@ function HienThiKetQua_ThamAn(tongGiaTri, Arr, lanChon) {
    KetQua.style.display = 'block';
    KetQua.innerHTML = `
       <p class="kq_GTLN_kq_ThamAn">${tongGiaTri}</p>
-      <p class="kq_GTLN_kq_ThamAn">${trongLuongConLai}kg</p>
+      <p class="kq_GTLN_kq_ThamAn">${trongLuongConLai} kg</p>
       <p class="kq_GTLN_kq_ThamAn mg_bottom">${tongDonGia.toFixed(2)}$</p>
       ${doVatDuocChon.map(doVat => `<p class="CacDoVatDcChon mg_top kq_GTLN_kq_ThamAn">Đồ vật ${doVat.ChiSo + 1} chọn ${lanChon[doVat.ChiSo]} lần</p>`).join('')}
    `;
@@ -379,42 +379,44 @@ function hienThiKetQua(giaTriLonNhat, lanChon, trongLuongBalo, Arr) {
    let tongTrongLuong = 0;
    let tongDonGia = 0;
    KetQua.style.display = 'block';
-   const soLanChon = timMonDoDuocChon(trongLuongBalo, giaTriLonNhat, lanChon, Arr); // Sử dụng kết quả trả về
-   // console.log(soLanChon)
+   const soLanChon = timMonDoDuocChon(trongLuongBalo, giaTriLonNhat, lanChon, Arr);
+
    if (soLanChon.every(count => count === 0)) {
-      // console.log("Không có đồ vật nào được chọn");
       KetQua.innerHTML += `<p class="co-red">Không có đồ vật nào được chọn, tất cả đều <br> vượt quá trọng lượng tối đa của balo</p>`;
       const QHD = document.getElementById("result_QuyHoachDong");
       QHD.style.marginLeft = "35px";
-      return; // Kết thúc hàm
+      return;
    }
+
+   // Tính toán tổng trọng lượng và đơn giá trước khi hiển thị
+   for (let i = 0; i < soLanChon.length; i++) {
+      if (soLanChon[i] > 0) {
+         const doVat = Arr[i];
+         tongTrongLuong += soLanChon[i] * doVat.TrongLuong;
+         tongDonGia += (doVat.GiaTri / doVat.TrongLuong) * soLanChon[i];
+      }
+   }
+
+   const trongLuongConLai = trongLuongBalo - tongTrongLuong;
+
    KetQua.innerHTML = `
       <div class="row_KqGTLN noWrap">
          <div class="kq_GTLN">Giá trị lớn nhất:</div><p class="kq_GTLN_kq"> ${tongGiaTri !== undefined ? tongGiaTri : 0}</p>
       </div>
-   `;
-   const trongLuongConLai = trongLuongBalo - tongTrongLuong;
-   KetQua.innerHTML += `
       <div class="row_KqGTLN">
          <div class="kq_GTLN noWrap">Trọng lượng còn lại:</div> <p class="kq_GTLN_kq">${trongLuongConLai} kg</p>
       </div>
+      <div class="row_KqGTLN">
+         <div class="kq_GTLN noWrap">Tổng đơn giá:</div> <p class="kq_GTLN_kq">${tongDonGia.toFixed(2)}$</p>
+      </div>
+      <div class="kq_GTLN">Đồ vật đã chọn:</div>
    `;
-   KetQua.innerHTML += `
-   
-   <div class="row_KqGTLN">
-      <div class="kq_GTLN noWrap">Tổng đơn giá:</div> <p class="kq_GTLN_kq">${tongDonGia.toFixed(2)}$</p>
-   </div>
-   
-   `;
-   KetQua.innerHTML += `<div class="kq_GTLN">Đồ vật đã chọn:</div>`;
 
-   // Tính toán số lần chọn cho từng món đồ
+   // Hiển thị thông tin các đồ vật được chọn
    for (let i = 0; i < soLanChon.length; i++) {
       if (soLanChon[i] > 0) {
          const doVat = Arr[i];
          KetQua.innerHTML += `<p class="CacDoVatDcChon kq_GTLN_kq">Đồ vật ${doVat.ChiSo + 1} chọn ${soLanChon[i]} lần <br></p>`;
-         tongTrongLuong += soLanChon[i] * doVat.TrongLuong;
-         tongDonGia += (doVat.GiaTri / doVat.TrongLuong) * soLanChon[i];
       }
    }
 }
