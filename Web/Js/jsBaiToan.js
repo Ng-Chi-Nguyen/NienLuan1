@@ -173,7 +173,7 @@ function TaoBang_ThamAn(Arr, lanChon) {
 
    // Tạo hàng tiêu đề
    const hangTieuDe = document.createElement('tr');
-   hangTieuDe.innerHTML = '<td class="Bg_Nau">Đồ vật</td><td>V</td><td>W</td><td><img class="Dola" src="./Img/Dola.png"></td><td class="Bg_Nau">Chọn</td>';
+   hangTieuDe.innerHTML = '<td class="Bg_Nau">Đồ vật</td><td><i class="fa-sharp fa-solid fa-sack-dollar"></td><td><i class="fa-sharp fa-solid fa-scale-unbalanced"></i></td><td><img class="Dola" src="./Img/Dola.png"></td><td class="Bg_Nau">Chọn</td>';
    tieuDeBang.appendChild(hangTieuDe);
 
    // Tạo nội dung bảng dựa trên mảng Arr
@@ -208,9 +208,9 @@ function HienThiKetQua_ThamAn(tongGiaTri, Arr, lanChon) {
 
    KetQua.style.display = 'block';
    KetQua.innerHTML = `
-      <p class="kq_GTLN_kq_ThamAn">${tongGiaTri}</p>
-      <p class="kq_GTLN_kq_ThamAn">${trongLuongConLai} kg</p>
-      <p class="kq_GTLN_kq_ThamAn mg_bottom">${tongDonGia.toFixed(2)}$</p>
+      <p class="kq_GTLN_kq_ThamAn width">${tongGiaTri}</p>
+      <p class="kq_GTLN_kq_ThamAn width">${trongLuongConLai} kg</p>
+      <p class="kq_GTLN_kq_ThamAn width mg_bottom">${tongDonGia.toFixed(2)}$</p>
       ${doVatDuocChon.map(doVat => `<p class="CacDoVatDcChon mg_top kq_GTLN_kq_ThamAn">Đồ vật ${doVat.ChiSo + 1} chọn ${lanChon[doVat.ChiSo]} lần</p>`).join('')}
    `;
 }
@@ -231,7 +231,7 @@ function hienThiBangPhuongAn(giaTriLonNhat, trongLuongBalo, soMonDo, Arr) {
 
    // Tạo hàng tiêu đề
    const hangTieuDe = document.createElement('tr');
-   hangTieuDe.innerHTML = '<td><img class="Dola" src="./Img/Dola.png"></td><td>W</td><td>V</td><td class="ij-cell"></td>';
+   hangTieuDe.innerHTML = '<td><img class="Dola" src="./Img/Dola.png"></td><td><i class="fa-sharp fa-solid fa-scale-unbalanced"></i></td><td><i class="fa-sharp fa-solid fa-sack-dollar"></i></td><td class="ij-cell"></td>';
 
    // Thêm các tiêu đề cột từ 0 đến trongLuongBalo
    for (let j = 0; j <= trongLuongBalo; j++) {
@@ -409,7 +409,7 @@ function hienThiKetQua(giaTriLonNhat, lanChon, trongLuongBalo, Arr) {
       <div class="row_KqGTLN">
          <div class="kq_GTLN noWrap">Tổng đơn giá:</div> <p class="kq_GTLN_kq">${tongDonGia.toFixed(2)}$</p>
       </div>
-      <div class="kq_GTLN">Đồ vật đã chọn:</div>
+      <div class="kq_GTLN text_center">Đồ vật đã chọn</div>
    `;
 
    // Hiển thị thông tin các đồ vật được chọn
