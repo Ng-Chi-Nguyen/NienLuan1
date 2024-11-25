@@ -1,3 +1,27 @@
+
+.left_QHD .conatiner::-webkit-scrollbar {
+   width: 12px; /* Độ rộng của thanh cuộn */
+   height: 7px;
+}
+
+/* Phần nền của thanh cuộn */
+.left_QHD .conatiner::-webkit-scrollbar-track {
+   background: #ddd; /* Màu nền */
+   border-radius: 10px; /* Góc bo tròn */
+}
+
+/* Phần di chuyển của thanh cuộn */
+.left_QHD .conatiner::-webkit-scrollbar-thumb {
+   background-color: #00ff00; /* Màu của thanh cuộn */
+   border-radius: 10px; /* Góc bo tròn */
+   border: 2px solid #00ff00; /* Viền xung quanh */
+}
+
+/* Thay đổi màu khi hover vào thanh cuộn */
+.left_QHD .conatiner::-webkit-scrollbar-thumb:hover {
+   background-color: #00ff00; /* Màu khi hover */
+}
+
 /* Ẩn mũi tên trên tất cả trình duyệt */
 .no-arrow::-webkit-outer-spin-button,
 .no-arrow::-webkit-inner-spin-button {
