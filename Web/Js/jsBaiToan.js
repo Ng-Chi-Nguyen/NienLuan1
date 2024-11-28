@@ -51,6 +51,37 @@ function kiemTraRong(value, errorMessage) {
       return true;
    }
 }
+function kiemTraHopLe(value, errorMessage) {
+   const error = document.getElementById('error');
+   if (isNaN(value) || value <= 0) {
+      error.innerHTML = errorMessage;
+      error.style.display = 'block';
+
+      setTimeout(() => {
+         error.style.display = 'none';
+      }, 3000);
+      return true;
+   }
+   return false; // Nếu hợp lệ, trả về false
+}
+
+function kiemTraSoThapPhan(value, errorMessage) {
+   const error = document.getElementById('error');
+   const regex = /^\d*\.\d+$/; // Biểu thức chính quy để kiểm tra số thập phân
+
+   if (regex.test(value)) {
+      error.innerHTML = errorMessage;
+      error.style.display = 'block';
+
+      setTimeout(() => {
+         error.style.display = 'none';
+      }, 3000);
+      return true;
+   }
+
+   return false; // Nếu không phải số thập phân, trả về false
+}
+
 function nhapMonDo() {
    const soMonDo = document.getElementById('soMonDo').value;
    const trongLuongBalo = document.getElementById('trongLuongBalo').value;
@@ -62,12 +93,18 @@ function nhapMonDo() {
       kiemTraRong(trongLuongBalo, "Bạn chưa nhập trọng lượng balo")) {
       return;
    }
-
+   if (kiemTraHopLe(soMonDo, "Số lượng đồ vật phải là số lớn hơn 0") ||
+      kiemTraHopLe(trongLuongBalo, "Trọng lượng balo phải là số lớn hơn 0")) {
+      return;
+   }
+   if (kiemTraSoThapPhan(soMonDo, "Số lượng đồ vật không được là số thập phân") ||
+      kiemTraSoThapPhan(trongLuongBalo, "Trọng lượng balo không được là số thập phân")) {
+      return;
+   }
    // Tạo nội dung để hiển thị
    const ketQua_SS1 = `
          <div class="content_SS1">
-            <p class="pos"><img src="./Img/MonDo.jpeg"> <span class="Nd1">${soMonDo}</span></p>
-            <p class="pos"><img src="./Img/W_Max.webp"> <span class="Nd2">${trongLuongBalo}</span></p>
+            <p class="Weight">Trọng lượng Balo <span class="co-red">${trongLuongBalo}</span> kg</p>
             <img class="loadGame" id="loadGame" src="./Img/iconChoiLaiGame.png">
          </div>
    `;
@@ -92,13 +129,17 @@ function nhapMonDo() {
            </div>
        `;
    }
-   const tatCaONhapGT_TL = oNhapGT_TL.querySelectorAll('#nhapGT_TL .Box input');
+
+   const tatCaONhapGT_TL = oNhapGT_TL.querySelectorAll('.Box input');
    tatCaONhapGT_TL.forEach(input => {
       input.addEventListener('input', function () {
-         if (this.value) {
-            this.style.borderColor = 'blue'; // Đổi viền thành màu xanh nếu có dữ liệu
+         // Kiểm tra nếu giá trị là số âm hoặc số thập phân
+         if (this.value <= 0 || /^[0-9]*[.][0-9]+$/.test(this.value)) {
+            this.style.borderColor = 'red'; // Đổi viền thành màu đỏ nếu có lỗi
+            this.setCustomValidity("Giá trị không được là số âm hoặc số thập phân");
          } else {
-            this.style.borderColor = ''; // Reset viền nếu không có dữ liệu
+            this.style.borderColor = 'blue'; // Reset viền nếu giá trị hợp lệ
+            this.setCustomValidity(""); // Reset thông báo lỗi
          }
       });
    });
@@ -198,10 +239,9 @@ function HienThiKetQua_ThamAn(tongGiaTri, Arr, lanChon) {
    // Hiển thị kết quả tổng hợp
    const KetQua = document.getElementById('result_ThamAn');
    if (doVatDuocChon.length === 0) {
-      KetQua.innerHTML = `<p class="co-red">Không có đồ vật nào được chọn, tất cả đều vượt quá trọng lượng tối đa của balo</p>`;
+      KetQua.innerHTML = ``;
       return;
    }
-
    // Tính tổng trọng lượng của các đồ vật được chọn
    const trongLuongDaDung = doVatDuocChon.reduce((sum, doVat) => sum + (doVat.TrongLuong * lanChon[doVat.ChiSo]), 0);
    const trongLuongConLai = trongLuongBalo - trongLuongDaDung;
@@ -385,6 +425,7 @@ function hienThiKetQua(giaTriLonNhat, lanChon, trongLuongBalo, Arr) {
       KetQua.innerHTML += `<p class="co-red">Không có đồ vật nào được chọn, tất cả đều <br> vượt quá trọng lượng tối đa của balo</p>`;
       const QHD = document.getElementById("result_QuyHoachDong");
       QHD.style.marginLeft = "35px";
+      QHD.style.border = "none";
       return;
    }
 
@@ -420,65 +461,3 @@ function hienThiKetQua(giaTriLonNhat, lanChon, trongLuongBalo, Arr) {
       }
    }
 }
-// document.getElementById('fileInput').addEventListener('change', handleFileInput);
-
-// function handleFileInput(event) {
-//    const file = event.target.files[0];
-//    if (!file) {
-//       return;
-//    }
-
-//    const reader = new FileReader();
-
-//    reader.onload = function (e) {
-//       const content = e.target.result;
-//       console.log(content)
-//       // Chuyển chuỗi thành mảng các dòng
-//       const dongs = content.split("\n");
-//       const soMonDo = dongs[0];
-//       const trongLuongBalo = dongs[1];
-
-//       let items = [];
-
-//       // Duyệt qua từng dòng, bỏ qua 2 dòng đầu và lấy giá trị/trọng lượng
-//       for (let i = 2; i < dongs.length; i++) {
-//          const line = dongs[i].trim();
-//          if (line) {
-//             const values = line.split(" ");  // Tách các giá trị theo dấu cách
-//             if (values.length >= 2) {
-//                const giaTri = parseInt(values[0], 10);  // Giá trị
-//                const trongLuong = parseInt(values[1], 10);  // Trọng lượng
-//                items.push({ giaTri, trongLuong });  // Lưu cặp giá trị và trọng lượng vào mảng
-//             }
-//          }
-//       }
-
-//       console.log(items);  // In ra mảng các đối tượng {giaTri, trongLuong}
-//    };
-
-//    reader.readAsText(file);
-// }
-
-// // Hàm xử lý tệp TXT
-// function parseTXT(txt) {
-//    const lines = txt.split('\n');
-//    const n = parseInt(lines[0].trim()); // Số lượng đồ vật
-//    const maxWeight = parseInt(lines[1].trim()); // Trọng lượng tối đa của balo
-//    const items = [];
-
-//    for (let i = 2; i < 2 + n; i++) {
-//       const values = lines[i].split(' ').map(val => parseInt(val.trim()));
-//       if (values.length === 2) {
-//          items.push({
-//             id: i - 1,
-//             weight: values[0],
-//             value: values[1]
-//          });
-//       }
-//    }
-
-//    return {
-//       items: items,
-//       maxWeight: maxWeight
-//    };
-// }

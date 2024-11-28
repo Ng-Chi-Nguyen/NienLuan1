@@ -75,6 +75,7 @@
    text-align: center;
    text-transform: uppercase;
    font-size: 35px;
+   margin-bottom: 30px;
 }
 #baloForm{
    text-align: center;
@@ -144,11 +145,32 @@
    font-size: 19px;
    color: #1E90FF;
    position: relative;
-   display: flex;
-   justify-content: center;
-   align-items: center;
    margin-top: -30px;
    margin-left: 60px;
+}
+.content_SS1 .Weight{
+   color: #000;
+   position: relative;
+   left: -2%;
+   top: 11px;
+}
+.content_SS1 .Weight::before{
+   content: "";
+   width: 200px;
+   height: 1px;
+   position: absolute;
+   background: #00ff00;
+   left: 31%;
+   top: 11px;
+}
+.content_SS1 .Weight::after{
+   content: "";
+   width: 200px;
+   height: 1px;
+   position: absolute;
+   background: #00ff00;
+   right: 31%;
+   top: 11px;
 }
 .content_SS1 .loadGame{
    position: absolute;
