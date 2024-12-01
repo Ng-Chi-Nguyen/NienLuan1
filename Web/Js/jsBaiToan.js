@@ -258,6 +258,8 @@ function HienThiKetQua_ThamAn(tongGiaTri, Arr, lanChon) {
 
 function hienThiBangPhuongAn(giaTriLonNhat, trongLuongBalo, soMonDo, Arr) {
    document.getElementById('nhapGT_TL').style.display = 'none';
+   document.querySelector('.Weight').classList.add('hide-before');
+
    const tieuDePA = document.querySelectorAll(".title_PA");
    tieuDePA.forEach(element => {
       element.innerHTML = "<p>BẢNG PHƯƠNG ÁN</p>"; // Cập nhật nội dung cho từng phần tử

@@ -1,4 +1,42 @@
-
+body{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+.linkGit{
+   color: #05f458;
+   margin: 0;
+   z-index: 20;
+   background: #FFF;
+   position: absolute;
+   right: 40%;
+   top: 17%;
+}
+.linkGit i{
+   font-size: 28px;
+   color: #00ECBA;
+   z-index: 22;
+}
+.linkGit i:hover{
+   color: #47ef18;
+   transition: 1s;
+}
+.Logo{
+   position: absolute;
+   border-right: 2px solid #000;
+   border-bottom: 2px solid #000;
+   border-radius: 0 0 6px 0;
+   padding: 10px;
+   background: linear-gradient(45deg, #aaddaa, #00ff00, #00e5ff, #8a2be2);
+   top: -30px;
+}
+.Logo h2{
+   margin: 0;
+}
+.Logo h2 > span:first-of-type{
+   font-size: 19px;
+   color: #FFF;
+}
 .left_QHD .conatiner::-webkit-scrollbar {
    width: 12px; /* Độ rộng của thanh cuộn */
    height: 7px;
@@ -79,6 +117,7 @@
 }
 #baloForm{
    text-align: center;
+   margin-left: 72px;
 }
 #baloForm table{
    margin-left: 41%;
@@ -87,6 +126,9 @@
    width: 500px;
    padding: 10px 20px;
    text-align: left;
+}
+#baloForm .btnSubmit{
+   margin-right: 65px;
 }
 #baloForm .Box .no-arrow, #GT_SL_Form .Box .no-arrow{
    background-color: #fffcf2; 
@@ -171,6 +213,14 @@
    background: #00ff00;
    right: 31%;
    top: 11px;
+}
+.content_SS1 .Weight.hide-before::before {
+   content: '';
+   display: none;
+}
+.content_SS1 .Weight.hide-before::after {
+   content: '';
+   display: none;
 }
 .content_SS1 .loadGame{
    position: absolute;
