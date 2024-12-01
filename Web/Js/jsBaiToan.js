@@ -424,7 +424,8 @@ function hienThiKetQua(giaTriLonNhat, lanChon, trongLuongBalo, Arr) {
    const soLanChon = timMonDoDuocChon(trongLuongBalo, giaTriLonNhat, lanChon, Arr);
 
    if (soLanChon.every(count => count === 0)) {
-      KetQua.innerHTML += `<p class="co-red">Không có đồ vật nào được chọn, tất cả đều <br> vượt quá trọng lượng tối đa của balo</p>`;
+      KetQua.innerHTML += `<p class="co-red ma-left">Không có đồ vật nào được chọn, tất cả đều vượt quá <br> trọng lượng tối đa của balo</p>`;
+      document.getElementById('dapan').style.display = "none";
       const QHD = document.getElementById("result_QuyHoachDong");
       QHD.style.marginLeft = "35px";
       QHD.style.border = "none";

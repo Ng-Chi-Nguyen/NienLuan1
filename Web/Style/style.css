@@ -66,6 +66,9 @@ body{
     -webkit-appearance: none; /* Loại bỏ mũi tên trên Chrome, Safari, Edge và Opera */
     margin: 0;
 }
+.ma-left{
+   margin-left: 15px;
+}
 .pos{
    position: relative;
 }
